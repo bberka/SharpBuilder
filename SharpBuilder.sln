@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33424.131
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharpBuilder", "SharpBuilder\SharpBuilder.csproj", "{D062AD01-9CE1-423B-866F-7C084A367D60}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpBuilder.Test", "SharpBuilder.Test\SharpBuilder.Test.csproj", "{9E7636BE-A8E2-4E63-890C-801709AD3D94}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D062AD01-9CE1-423B-866F-7C084A367D60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D062AD01-9CE1-423B-866F-7C084A367D60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D062AD01-9CE1-423B-866F-7C084A367D60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D062AD01-9CE1-423B-866F-7C084A367D60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E7636BE-A8E2-4E63-890C-801709AD3D94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E7636BE-A8E2-4E63-890C-801709AD3D94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E7636BE-A8E2-4E63-890C-801709AD3D94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E7636BE-A8E2-4E63-890C-801709AD3D94}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {197196F8-DE16-468B-86CC-7654904E401B}
+	EndGlobalSection
+EndGlobal
