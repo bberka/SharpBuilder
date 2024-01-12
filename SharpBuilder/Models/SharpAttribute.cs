@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using SharpBuilder.Internal;
 
 namespace SharpBuilder.Models;
 
@@ -14,7 +15,7 @@ public class SharpAttribute
 
   public Dictionary<string, object> PropertyParameters { get; internal set; } = new();
 
-  public string Compile() {
+  public override string ToString() {
     var sb = new StringBuilder();
     Compile(sb);
     return sb.ToString();
@@ -25,7 +26,16 @@ public class SharpAttribute
     sb.Append(AttributeName);
     if (Parameters.Length > 0) {
       sb.Append('(');
-      sb.Append(string.Join(", ", Parameters));
+      foreach (var p in Parameters) {
+        var isString = p is string;
+        if (isString) {
+          sb.Append('"');
+          sb.Append(StringHelper.EscapeCSharpString(p.ToString()!));
+          sb.Append('"');
+        }
+        else
+          sb.Append(p);
+      }
       sb.Append(')');
     }
 

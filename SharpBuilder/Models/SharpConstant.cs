@@ -18,12 +18,11 @@ public class SharpConstant
 
   public SharpSummary? Summary { get; internal set; }
 
-  public string Compile() {
+  public override string ToString() {
     var sb = new StringBuilder();
     Compile(sb);
     return sb.ToString();
   }
-
   public void Compile(StringBuilder sb) {
     if (Summary != null) {
       Summary?.Compile(sb);

@@ -19,7 +19,7 @@ public class SharpClass
 
   public SharpSummary? Summary { get; internal set; }
 
-  public string Compile() {
+  public override string ToString() {
     var sb = new StringBuilder();
     Compile(sb);
     return sb.ToString();
