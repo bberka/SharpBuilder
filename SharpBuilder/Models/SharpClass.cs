@@ -13,6 +13,8 @@ public class SharpClass
   public List<SharpProperty> Properties { get; internal set; } = new();
   public List<SharpField> Fields { get; internal set; } = new();
   public List<SharpConstant> Constants { get; internal set; } = new();
+
+  public List<SharpAttribute> Attributes { get; internal set; }
   public AccessModifier AccessModifier { get; internal set; }
   public Keyword Keyword { get; internal set; }
 

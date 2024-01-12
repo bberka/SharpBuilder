@@ -72,6 +72,17 @@ public class SharpClassBuilder
     _sharpClass.Constants.Add(constant);
     return this;
   }
+  
+  public SharpClassBuilder WithAttributes(List<SharpAttribute> attributes) {
+    _sharpClass.Attributes = attributes;
+    return this;
+  }
+  
+  public SharpClassBuilder WithAttribute(SharpAttribute attribute) {
+    _sharpClass.Attributes ??= new List<SharpAttribute>();
+    _sharpClass.Attributes.Add(attribute);
+    return this;
+  }
 
   //public SharpClassBuilder WithType(FileType fileType) {
   //  _sharpClass.Type = fileType;

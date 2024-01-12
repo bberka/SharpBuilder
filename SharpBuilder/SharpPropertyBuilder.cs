@@ -41,6 +41,17 @@ public class SharpPropertyBuilder
         _property.IsStatic = true;
         return this;
     }
+    
+    public SharpPropertyBuilder WithAttributes(List<SharpAttribute> attributes) {
+        _property.Attributes = attributes;
+        return this;
+    }
+    
+    public SharpPropertyBuilder WithAttribute(SharpAttribute attribute) {
+        _property.Attributes ??= new List<SharpAttribute>();
+        _property.Attributes.Add(attribute);
+        return this;
+    }
 
     public SharpProperty Build() {
         return _property;

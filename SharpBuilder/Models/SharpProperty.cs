@@ -13,5 +13,6 @@ public class SharpProperty
   public string Name { get; internal set; }
   public Type ValueType { get; internal set; }
   public bool IsStatic { get; internal set; } = false;
+  public List<SharpAttribute> Attributes { get;internal set; }
 
 }

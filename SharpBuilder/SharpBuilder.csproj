@@ -4,7 +4,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-      <Version>1.0.0</Version>
+      <Version>1.2.0</Version>
       <Title>SharpBuilder</Title>
       <Description>C# code and class builder, for creating models from various type of files. Excel, text, json files.</Description>
       <PackageProjectUrl>https://github.com/bberka/SharpBuilder</PackageProjectUrl>
@@ -16,7 +16,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\..\easme-lib\LICENSE.txt">
+    <None Include="..\LICENSE.txt">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>

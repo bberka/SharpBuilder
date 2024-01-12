@@ -15,6 +15,25 @@ public static class SharpExtensions
     sb.AppendLine();
     sb.AppendLine("namespace " + sharpClass.NameSpace + ";");
     sb.AppendLine();
+    
+    if(sharpClass.Attributes.Count > 0) {
+      foreach (var attribute in sharpClass.Attributes) {
+        sb.Append('[');
+        sb.Append(attribute.AttributeName);
+        if (attribute.Parameters != null && attribute.Parameters.Length > 0) {
+          sb.Append('(');
+          sb.Append(string.Join(", ", attribute.Parameters));
+          sb.Append(')');
+        }
+        if (attribute.PropertyParameters != null && attribute.PropertyParameters.Count > 0) {
+          sb.Append('(');
+          sb.Append(string.Join(", ", attribute.PropertyParameters.Select(x => x.Key + " = " + x.Value)));
+          sb.Append(')');
+        }
+        sb.Append(']');
+        sb.AppendLine();
+      }
+    }
     sb.Append(sharpClass.AccessModifier.ToString().ToLower());
     sb.Append(" ");
     sb.Append(sharpClass.Keyword.ToString().ToLower());
@@ -63,6 +82,24 @@ public static class SharpExtensions
     }
     foreach (var prop in sharpClass.Properties) {
       sb.Append("\t");
+      if (prop.Attributes.Count > 0) {
+        foreach (var attribute in prop.Attributes) {
+          sb.Append('[');
+          sb.Append(attribute.AttributeName);
+          if (attribute.Parameters != null && attribute.Parameters.Length > 0) {
+            sb.Append('(');
+            sb.Append(string.Join(", ", attribute.Parameters));
+            sb.Append(')');
+          }
+          if (attribute.PropertyParameters != null && attribute.PropertyParameters.Count > 0) {
+            sb.Append('(');
+            sb.Append(string.Join(", ", attribute.PropertyParameters.Select(x => x.Key + " = " + x.Value)));
+            sb.Append(')');
+          }
+          sb.Append(']');
+          sb.AppendLine();
+        }
+      }
       sb.Append(prop.AccessModifier.ToString().ToLower());
       sb.Append(" ");
 
