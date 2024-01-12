@@ -7,8 +7,8 @@ public class SharpConstantBuilder
 {
   private readonly SharpConstant _constant;
 
-  public SharpConstantBuilder() {
-    _constant = new SharpConstant();
+  public SharpConstantBuilder(string name, Type valueType, object value) {
+    _constant = new SharpConstant(name, valueType, value);
   }
 
   public SharpConstantBuilder WithAccessModifier(AccessModifier accessModifier) {
@@ -16,22 +16,25 @@ public class SharpConstantBuilder
     return this;
   }
 
-
-  public SharpConstantBuilder WithName(string name) {
+  public SharpConstantBuilder OverrideName(string name) {
     _constant.Name = name;
     return this;
   }
 
-  public SharpConstantBuilder WithValueType(Type valueType) {
+  public SharpConstantBuilder OverrideValueType(Type valueType) {
     _constant.ValueType = valueType;
     return this;
   }
 
-  public SharpConstantBuilder WithValue(object value) {
+  public SharpConstantBuilder OverrideValue(object value) {
     _constant.Value = value;
     return this;
   }
 
+  public SharpConstantBuilder WithSummary(SharpSummary summary) {
+    _constant.Summary = summary;
+    return this;
+  }
 
   public SharpConstant Build() {
     return _constant;

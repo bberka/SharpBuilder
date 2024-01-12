@@ -7,8 +7,8 @@ public class SharpFieldBuilder
 {
   private readonly SharpField _field;
 
-  public SharpFieldBuilder() {
-    _field = new SharpField();
+  public SharpFieldBuilder(string name, Type valueType) {
+    _field = new SharpField(name, valueType);
   }
 
   public SharpFieldBuilder WithAccessModifier(AccessModifier accessModifier) {
@@ -17,19 +17,16 @@ public class SharpFieldBuilder
   }
 
 
-  public SharpFieldBuilder WithName(string name) {
+  public SharpFieldBuilder OverrideName(string name) {
     _field.Name = name;
     return this;
   }
 
-  public SharpFieldBuilder WithName(object value) {
-    _field.Value = value;
-    return this;
-  }
-  public SharpFieldBuilder WithValueType(Type valueType) {
+  public SharpFieldBuilder OverrideValueType(Type valueType) {
     _field.ValueType = valueType;
     return this;
   }
+
   public SharpFieldBuilder WithValue(object value) {
     _field.Value = value;
     return this;
@@ -40,8 +37,14 @@ public class SharpFieldBuilder
     return this;
   }
 
+
   public SharpFieldBuilder Readonly() {
     _field.IsReadOnly = true;
+    return this;
+  }
+
+  public SharpFieldBuilder WithSummary(SharpSummary summary) {
+    _field.Summary = summary;
     return this;
   }
 

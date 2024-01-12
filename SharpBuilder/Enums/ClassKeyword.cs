@@ -1,6 +1,6 @@
 ﻿namespace SharpBuilder.Enums;
 
-public enum Keyword
+public enum ClassKeyword
 {
   Readonly,
   Static,

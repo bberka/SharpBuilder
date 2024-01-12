@@ -6,25 +6,25 @@ public class SharpAttributeBuilder
 {
   private readonly SharpAttribute _sharpAttribute;
 
-  public SharpAttributeBuilder() {
-    _sharpAttribute = new SharpAttribute();
+  public SharpAttributeBuilder(string attributeName) {
+    _sharpAttribute = new SharpAttribute(attributeName);
   }
-  
-  public SharpAttributeBuilder WithAttributeName(string attributeName) {
+
+  public SharpAttributeBuilder OverrideAttributeName(string attributeName) {
     _sharpAttribute.AttributeName = attributeName;
     return this;
   }
-  
+
   public SharpAttributeBuilder WithParameters(object[] parameters) {
     _sharpAttribute.Parameters = parameters;
     return this;
   }
-  
+
   public SharpAttributeBuilder WithPropertyParameters(Dictionary<string, object> propertyParameters) {
     _sharpAttribute.PropertyParameters = propertyParameters;
     return this;
   }
-  
+
   public SharpAttribute Build() {
     return _sharpAttribute;
   }

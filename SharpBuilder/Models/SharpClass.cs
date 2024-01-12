@@ -1,24 +1,70 @@
-﻿using SharpBuilder.Enums;
+﻿using System.Text;
+using SharpBuilder.Enums;
 
 namespace SharpBuilder.Models;
 
 public class SharpClass
 {
-  internal SharpClass() {
-    
+  internal SharpClass(string name) {
+    Name = name;
   }
-  public List<string> UsingList { get; internal set; } = new();
-  public string NameSpace { get; internal set; }
+
   public string Name { get; internal set; }
   public List<SharpProperty> Properties { get; internal set; } = new();
   public List<SharpField> Fields { get; internal set; } = new();
   public List<SharpConstant> Constants { get; internal set; } = new();
+  public List<SharpAttribute> Attributes { get; internal set; } = new();
+  public AccessModifier AccessModifier { get; internal set; } = AccessModifier.Public;
+  public ClassKeyword? Keyword { get; internal set; }
 
-  public List<SharpAttribute> Attributes { get; internal set; }
-  public AccessModifier AccessModifier { get; internal set; }
-  public Keyword Keyword { get; internal set; }
+  public SharpSummary? Summary { get; internal set; }
 
-  //public void Export(string fileNameWithoutExtension) {
-  //  SharpExtensions.Export(this, fileNameWithoutExtension);
-  //}
+  public string Compile() {
+    var sb = new StringBuilder();
+    Compile(sb);
+    return sb.ToString();
+  }
+
+  public void Compile(StringBuilder sb) {
+    if (Summary != null) {
+      Summary?.Compile(sb);
+      sb.AppendLine();
+    }
+
+    foreach (var attribute in Attributes) {
+      sb.Append('\t');
+      attribute.Compile(sb);
+      sb.AppendLine();
+    }
+
+    sb.Append(AccessModifier.ToString().ToLower());
+    sb.Append(' ');
+    sb.Append(Keyword.ToString()?.ToLower());
+    sb.Append(' ');
+    sb.Append("class");
+    sb.Append(' ');
+    sb.Append(Name);
+    sb.Append(" {");
+    sb.AppendLine();
+
+    foreach (var constant in Constants) {
+      sb.Append('\t');
+      constant.Compile(sb);
+      sb.AppendLine();
+    }
+
+    foreach (var field in Fields) {
+      sb.Append('\t');
+      field.Compile(sb);
+      sb.AppendLine();
+    }
+
+    foreach (var prop in Properties) {
+      sb.Append('\t');
+      prop.Compile(sb);
+      sb.AppendLine();
+    }
+
+    sb.AppendLine("}");
+  }
 }

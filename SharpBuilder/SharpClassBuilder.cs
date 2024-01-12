@@ -7,22 +7,12 @@ public class SharpClassBuilder
 {
   private readonly SharpClass _sharpClass;
 
-  public SharpClassBuilder() {
-    _sharpClass = new SharpClass();
+  public SharpClassBuilder(string name) {
+    _sharpClass = new SharpClass(name);
   }
 
-  public SharpClassBuilder WithUsing(string usingString) {
-    _sharpClass.UsingList.Add(usingString);
-    return this;
-  }
-
-  public SharpClassBuilder WithUsingList(List<string> list) {
-    _sharpClass.UsingList = list;
-    return this;
-  }
-
-  public SharpClassBuilder WithNameSpace(string nameSpace) {
-    _sharpClass.NameSpace = nameSpace;
+  public SharpClassBuilder OverrideName(string name) {
+    _sharpClass.Name = name;
     return this;
   }
 
@@ -31,15 +21,12 @@ public class SharpClassBuilder
     _sharpClass.AccessModifier = accessModifier;
     return this;
   }
-  public SharpClassBuilder WithKeyword(Keyword keyword) {
-    _sharpClass.Keyword = keyword;
+
+  public SharpClassBuilder WithKeyword(ClassKeyword classKeyword) {
+    _sharpClass.Keyword = classKeyword;
     return this;
   }
 
-  public SharpClassBuilder WithName(string name) {
-    _sharpClass.Name = name;
-    return this;
-  }
 
   public SharpClassBuilder WithProperties(List<SharpProperty> properties) {
     _sharpClass.Properties = properties;
@@ -51,6 +38,7 @@ public class SharpClassBuilder
     _sharpClass.Properties.Add(property);
     return this;
   }
+
   public SharpClassBuilder WithFields(List<SharpField> fields) {
     _sharpClass.Fields = fields;
     return this;
@@ -72,25 +60,24 @@ public class SharpClassBuilder
     _sharpClass.Constants.Add(constant);
     return this;
   }
-  
+
   public SharpClassBuilder WithAttributes(List<SharpAttribute> attributes) {
     _sharpClass.Attributes = attributes;
     return this;
   }
-  
+
   public SharpClassBuilder WithAttribute(SharpAttribute attribute) {
     _sharpClass.Attributes ??= new List<SharpAttribute>();
     _sharpClass.Attributes.Add(attribute);
     return this;
   }
 
-  //public SharpClassBuilder WithType(FileType fileType) {
-  //  _sharpClass.Type = fileType;
-  //  return this;
-  //}
+  public SharpClassBuilder WithSummary(SharpSummary summary) {
+    _sharpClass.Summary = summary;
+    return this;
+  }
 
   public SharpClass Build() {
     return _sharpClass;
   }
-
 }
