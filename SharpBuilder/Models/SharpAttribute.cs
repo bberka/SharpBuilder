@@ -28,29 +28,30 @@ public class SharpAttribute
       sb.Append('(');
       for (int i = 0; i < Parameters.Length; i++) {
         var p = Parameters[i];
-        if (p is bool b) {
-          sb.Append(b
-                      ? "true"
-                      : "false");
-        }
-        else if (p is char c) {
-          sb.Append('\'');
-          sb.Append(c);
-          sb.Append('\'');
-        }
-        else if (p is null) {
-          sb.Append("null");
-        }
-        else if (p is Enum) {
-          sb.Append(p.GetType().Name);
-          sb.Append('.');
-          sb.Append(p);
-        }
-        else {
-          sb.Append('"');
-          sb.Append(StringHelper.EscapeCSharpString(p.ToString()!));
-          sb.Append('"');
-        }
+        sb.Append(p);
+        // if (p is bool b) {
+        //   sb.Append(b
+        //               ? "true"
+        //               : "false");
+        // }
+        // else if (p is char c) {
+        //   sb.Append('\'');
+        //   sb.Append(c);
+        //   sb.Append('\'');
+        // }
+        // else if (p is null) {
+        //   sb.Append("null");
+        // }
+        // else if (p is Enum) {
+        //   sb.Append(p.GetType().Name);
+        //   sb.Append('.');
+        //   sb.Append(p);
+        // }
+        // else {
+        //   sb.Append('"');
+        //   sb.Append(StringHelper.EscapeCSharpString(p.ToString()!));
+        //   sb.Append('"');
+        // }
         var isLastParameter = i == Parameters.Length - 1;
         if (!isLastParameter) sb.Append(", ");
       }

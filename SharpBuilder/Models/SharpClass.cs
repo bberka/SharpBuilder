@@ -17,6 +17,7 @@ public class SharpClass
   public AccessModifier AccessModifier { get; internal set; } = AccessModifier.Public;
   public ClassKeyword? Keyword { get; internal set; }
 
+  public string[] InheritanceList { get; internal set; } = Array.Empty<string>();
   public SharpSummary? Summary { get; internal set; }
 
   public override string ToString() {
@@ -45,7 +46,11 @@ public class SharpClass
     sb.Append("class");
     sb.Append(' ');
     sb.Append(Name);
-    sb.Append(" {");
+    if (InheritanceList.Length > 0) {
+      sb.Append(" : ");
+      sb.Append(string.Join(", ", InheritanceList));
+    }
+    sb.AppendLine(" {");
     sb.AppendLine();
     sb.AppendLine();
 

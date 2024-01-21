@@ -55,6 +55,18 @@ public class SharpClassBuilder
     return this;
   }
 
+  public SharpClassBuilder WithInheritanceList(string[] inheritanceList) {
+    _sharpClass.InheritanceList = inheritanceList;
+    return this;
+  }
+
+  public SharpClassBuilder WithInheritance(string inheritance) {
+    _sharpClass.InheritanceList ??= Array.Empty<string>();
+    _sharpClass.InheritanceList = _sharpClass.InheritanceList.Append(inheritance).ToArray();
+    return this;
+  }
+
+
   public SharpClassBuilder WithConstant(SharpConstant constant) {
     _sharpClass.Constants ??= new List<SharpConstant>();
     _sharpClass.Constants.Add(constant);
