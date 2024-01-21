@@ -35,6 +35,7 @@ public class SharpProperty
 
     if (Attributes.Count > 0)
       foreach (var attribute in Attributes) {
+        sb.Append('\t');
         sb.Append('[');
         sb.Append(attribute.AttributeName);
         if (attribute.Parameters.Length > 0) {
@@ -53,6 +54,7 @@ public class SharpProperty
         sb.AppendLine();
       }
 
+    sb.Append('\t');
     sb.Append(AccessModifier.ToString().ToLower());
     sb.Append(' ');
 

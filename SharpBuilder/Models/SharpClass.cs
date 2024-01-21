@@ -32,7 +32,6 @@ public class SharpClass
     }
 
     foreach (var attribute in Attributes) {
-      sb.Append('\t');
       attribute.Compile(sb);
       sb.AppendLine();
     }
@@ -48,19 +47,16 @@ public class SharpClass
     sb.AppendLine();
 
     foreach (var constant in Constants) {
-      sb.Append('\t');
       constant.Compile(sb);
       sb.AppendLine();
     }
 
     foreach (var field in Fields) {
-      sb.Append('\t');
       field.Compile(sb);
       sb.AppendLine();
     }
 
     foreach (var prop in Properties) {
-      sb.Append('\t');
       prop.Compile(sb);
       sb.AppendLine();
     }

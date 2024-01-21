@@ -28,7 +28,7 @@ public class SharpConstant
       Summary?.Compile(sb);
       sb.AppendLine();
     }
-
+    sb.Append('\t');
     sb.Append(AccessModifier.ToString().ToLower());
     sb.Append(' ');
     sb.Append(ValueType.Name);

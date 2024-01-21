@@ -38,9 +38,9 @@ public class SharpFile
 
     sb.AppendLine();
     sb.AppendLine("namespace " + Namespace);
-    sb.AppendLine(BlockScopedNameSpace
-                    ? "{"
-                    : ";");
+    if(BlockScopedNameSpace) sb.AppendLine("{");
+    else sb.Append(';');
+ 
     sb.AppendLine();
 
 
@@ -50,6 +50,9 @@ public class SharpFile
     }
 
 
-    if (BlockScopedNameSpace) sb.AppendLine("}");
+    if (BlockScopedNameSpace) {
+      sb.AppendLine("");
+      sb.AppendLine("}");
+    }
   }
 }

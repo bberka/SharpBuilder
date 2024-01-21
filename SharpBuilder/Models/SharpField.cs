@@ -30,7 +30,7 @@ public class SharpField
       Summary?.Compile(sb);
       sb.AppendLine();
     }
-
+    sb.Append('\t');
     sb.Append(AccessModifier.ToString().ToLower());
     sb.Append(' ');
     if (IsStatic) {
