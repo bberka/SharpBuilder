@@ -1,5 +1,6 @@
 ﻿using System.Text;
 using SharpBuilder.Enums;
+using SharpBuilder.Internal;
 
 namespace SharpBuilder.Models;
 
@@ -34,7 +35,7 @@ public class SharpConstant
     sb.Append('\t');
     sb.Append(AccessModifier.ToString().ToLower());
     sb.Append(' ');
-    sb.Append(ValueType.Name);
+    sb.Append(ValueTypeHelper.GetValueTypeName(ValueType));
     sb.Append(' ');
     sb.Append(Name);
     sb.Append(" = ");

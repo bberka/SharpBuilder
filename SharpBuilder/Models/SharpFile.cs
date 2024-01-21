@@ -34,13 +34,13 @@ public class SharpFile
 
 
   public void Compile(StringBuilder sb) {
-    foreach (var item in UsingList) sb.AppendLine("using " + item + ";");
-
-    sb.AppendLine();
-    sb.AppendLine("namespace " + Namespace);
-    if (BlockScopedNameSpace) sb.AppendLine("{");
-    else sb.Append(';');
-
+    if (UsingList.Count > 0) {
+      foreach (var item in UsingList) sb.AppendLine("using " + item + ";");
+      sb.AppendLine();
+    }
+    sb.AppendLine("namespace " + Namespace + (BlockScopedNameSpace
+                                            ? "{"
+                                            : ";"));
     sb.AppendLine();
 
 

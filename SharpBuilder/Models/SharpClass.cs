@@ -38,12 +38,15 @@ public class SharpClass
 
     sb.Append(AccessModifier.ToString().ToLower());
     sb.Append(' ');
-    sb.Append(Keyword.ToString()?.ToLower());
-    sb.Append(' ');
+    if (Keyword != null) {
+      sb.Append(Keyword.ToString()?.ToLower());
+      sb.Append(' ');
+    }
     sb.Append("class");
     sb.Append(' ');
     sb.Append(Name);
     sb.Append(" {");
+    sb.AppendLine();
     sb.AppendLine();
 
     foreach (var constant in Constants) constant.Compile(sb);

@@ -1,5 +1,6 @@
 ﻿using System.Text;
 using SharpBuilder.Enums;
+using SharpBuilder.Internal;
 
 namespace SharpBuilder.Models;
 
@@ -64,16 +65,14 @@ public class SharpProperty
       sb.Append(' ');
     }
 
-    sb.Append(ValueType.Name);
+    sb.Append(ValueTypeHelper.GetValueTypeName(ValueType));
     sb.Append(' ');
     sb.Append(Name);
     sb.Append(" { ");
     if (GetterAccessModifier != AccessModifier.Public) sb.Append(GetterAccessModifier.ToString().ToLower() + " ");
-
-    sb.Append("get;");
+    sb.Append("get; ");
     if (SetterAccessModifier != AccessModifier.Public) sb.Append(SetterAccessModifier.ToString().ToLower() + " ");
-
-    sb.Append("set;");
+    sb.Append("set; ");
     sb.Append('}');
     sb.AppendLine();
   }

@@ -3,7 +3,7 @@
   <PropertyGroup>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <Version>2.0.2</Version>
+    <Version>2.0.3</Version>
     <Title>SharpBuilder</Title>
     <Description>C# code and class builder, for creating models from various type of files. Excel, text, json files.</Description>
     <PackageProjectUrl>https://github.com/bberka/SharpBuilder</PackageProjectUrl>

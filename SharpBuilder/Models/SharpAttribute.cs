@@ -26,14 +26,9 @@ public class SharpAttribute
     sb.Append(AttributeName);
     if (Parameters.Length > 0) {
       sb.Append('(');
-      foreach (var p in Parameters) {
-        var isString = p is string;
-        if (isString) {
-          sb.Append('"');
-          sb.Append(StringHelper.EscapeCSharpString(p.ToString()!));
-          sb.Append('"');
-        }
-        else if (p is bool b) {
+      for (int i = 0; i < Parameters.Length; i++) {
+        var p = Parameters[i];
+        if (p is bool b) {
           sb.Append(b
                       ? "true"
                       : "false");
@@ -52,10 +47,13 @@ public class SharpAttribute
           sb.Append(p);
         }
         else {
-          sb.Append(p);
+          sb.Append('"');
+          sb.Append(StringHelper.EscapeCSharpString(p.ToString()!));
+          sb.Append('"');
         }
+        var isLastParameter = i == Parameters.Length - 1;
+        if (!isLastParameter) sb.Append(", ");
       }
-
       sb.Append(')');
     }
 

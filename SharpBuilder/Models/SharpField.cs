@@ -1,5 +1,6 @@
 ﻿using System.Text;
 using SharpBuilder.Enums;
+using SharpBuilder.Internal;
 
 namespace SharpBuilder.Models;
 
@@ -46,7 +47,7 @@ public class SharpField
       sb.Append(' ');
     }
 
-    sb.Append(ValueType.Name);
+    sb.Append(ValueTypeHelper.GetValueTypeName(ValueType));
     sb.Append(' ');
     sb.Append(Name);
     if (Value != null) {
