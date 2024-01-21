@@ -46,20 +46,11 @@ public class SharpClass
     sb.Append(" {");
     sb.AppendLine();
 
-    foreach (var constant in Constants) {
-      constant.Compile(sb);
-      sb.AppendLine();
-    }
+    foreach (var constant in Constants) constant.Compile(sb);
 
-    foreach (var field in Fields) {
-      field.Compile(sb);
-      sb.AppendLine();
-    }
+    foreach (var field in Fields) field.Compile(sb);
 
-    foreach (var prop in Properties) {
-      prop.Compile(sb);
-      sb.AppendLine();
-    }
+    foreach (var prop in Properties) prop.Compile(sb);
 
     sb.AppendLine("}");
   }

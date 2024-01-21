@@ -23,11 +23,14 @@ public class SharpConstant
     Compile(sb);
     return sb.ToString();
   }
+
   public void Compile(StringBuilder sb) {
+    sb.AppendLine();
     if (Summary != null) {
       Summary?.Compile(sb);
       sb.AppendLine();
     }
+
     sb.Append('\t');
     sb.Append(AccessModifier.ToString().ToLower());
     sb.Append(' ');
@@ -37,5 +40,6 @@ public class SharpConstant
     sb.Append(" = ");
     sb.Append(Value);
     sb.AppendLine(";");
+    sb.AppendLine();
   }
 }

@@ -28,6 +28,7 @@ public class SharpProperty
   }
 
   public void Compile(StringBuilder sb) {
+    sb.AppendLine();
     if (Summary != null) {
       Summary?.Compile(sb);
       sb.AppendLine();
@@ -74,5 +75,6 @@ public class SharpProperty
 
     sb.Append("set;");
     sb.Append('}');
+    sb.AppendLine();
   }
 }

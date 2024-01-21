@@ -26,10 +26,13 @@ public class SharpField
   }
 
   public void Compile(StringBuilder sb) {
+    sb.AppendLine();
+
     if (Summary != null) {
       Summary?.Compile(sb);
       sb.AppendLine();
     }
+
     sb.Append('\t');
     sb.Append(AccessModifier.ToString().ToLower());
     sb.Append(' ');
@@ -52,5 +55,6 @@ public class SharpField
     }
 
     sb.AppendLine(";");
+    sb.AppendLine();
   }
 }

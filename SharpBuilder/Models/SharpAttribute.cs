@@ -33,9 +33,29 @@ public class SharpAttribute
           sb.Append(StringHelper.EscapeCSharpString(p.ToString()!));
           sb.Append('"');
         }
-        else
+        else if (p is bool b) {
+          sb.Append(b
+                      ? "true"
+                      : "false");
+        }
+        else if (p is char c) {
+          sb.Append('\'');
+          sb.Append(c);
+          sb.Append('\'');
+        }
+        else if (p is null) {
+          sb.Append("null");
+        }
+        else if (p is Enum) {
+          sb.Append(p.GetType().Name);
+          sb.Append('.');
           sb.Append(p);
+        }
+        else {
+          sb.Append(p);
+        }
       }
+
       sb.Append(')');
     }
 
