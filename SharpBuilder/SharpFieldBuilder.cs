@@ -11,7 +11,7 @@ public class SharpFieldBuilder
     _field = new SharpField(name, valueType);
   }
 
-  public SharpFieldBuilder WithAccessModifier(AccessModifier accessModifier) {
+  public SharpFieldBuilder AddAccessModifier(AccessModifier accessModifier) {
     _field.AccessModifier = accessModifier;
     return this;
   }
@@ -27,7 +27,7 @@ public class SharpFieldBuilder
     return this;
   }
 
-  public SharpFieldBuilder WithValue(object value) {
+  public SharpFieldBuilder AddValue(object value) {
     _field.Value = value;
     return this;
   }
@@ -43,7 +43,7 @@ public class SharpFieldBuilder
     return this;
   }
 
-  public SharpFieldBuilder WithSummary(SharpSummary summary) {
+  public SharpFieldBuilder AddSummary(SharpSummary summary) {
     _field.Summary = summary;
     return this;
   }

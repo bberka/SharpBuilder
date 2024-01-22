@@ -17,74 +17,74 @@ public class SharpClassBuilder
   }
 
 
-  public SharpClassBuilder WithAccessModifier(AccessModifier accessModifier) {
+  public SharpClassBuilder AddAccessModifier(AccessModifier accessModifier) {
     _sharpClass.AccessModifier = accessModifier;
     return this;
   }
 
-  public SharpClassBuilder WithKeyword(ClassKeyword classKeyword) {
+  public SharpClassBuilder AddKeyword(ClassKeyword classKeyword) {
     _sharpClass.Keyword = classKeyword;
     return this;
   }
 
 
-  public SharpClassBuilder WithProperties(List<SharpProperty> properties) {
+  public SharpClassBuilder AddProperties(List<SharpProperty> properties) {
     _sharpClass.Properties = properties;
     return this;
   }
 
-  public SharpClassBuilder WithProperty(SharpProperty property) {
+  public SharpClassBuilder AddProperty(SharpProperty property) {
     _sharpClass.Properties ??= new List<SharpProperty>();
     _sharpClass.Properties.Add(property);
     return this;
   }
 
-  public SharpClassBuilder WithFields(List<SharpField> fields) {
+  public SharpClassBuilder AddFields(List<SharpField> fields) {
     _sharpClass.Fields = fields;
     return this;
   }
 
-  public SharpClassBuilder WithField(SharpField field) {
+  public SharpClassBuilder AddField(SharpField field) {
     _sharpClass.Fields ??= new List<SharpField>();
     _sharpClass.Fields.Add(field);
     return this;
   }
 
-  public SharpClassBuilder WithConstants(List<SharpConstant> constants) {
+  public SharpClassBuilder AddConstants(List<SharpConstant> constants) {
     _sharpClass.Constants = constants;
     return this;
   }
 
-  public SharpClassBuilder WithInheritanceList(string[] inheritanceList) {
+  public SharpClassBuilder AddInheritanceList(string[] inheritanceList) {
     _sharpClass.InheritanceList = inheritanceList;
     return this;
   }
 
-  public SharpClassBuilder WithInheritance(string inheritance) {
+  public SharpClassBuilder AddInheritance(string inheritance) {
     _sharpClass.InheritanceList ??= Array.Empty<string>();
     _sharpClass.InheritanceList = _sharpClass.InheritanceList.Append(inheritance).ToArray();
     return this;
   }
 
 
-  public SharpClassBuilder WithConstant(SharpConstant constant) {
+  public SharpClassBuilder AddConstant(SharpConstant constant) {
     _sharpClass.Constants ??= new List<SharpConstant>();
     _sharpClass.Constants.Add(constant);
     return this;
   }
 
-  public SharpClassBuilder WithAttributes(List<SharpAttribute> attributes) {
+  public SharpClassBuilder AddAttributes(List<SharpAttribute> attributes) {
     _sharpClass.Attributes = attributes;
     return this;
   }
 
-  public SharpClassBuilder WithAttribute(SharpAttribute attribute) {
+  public SharpClassBuilder AddAttribute(SharpAttribute attribute) {
     _sharpClass.Attributes ??= new List<SharpAttribute>();
     _sharpClass.Attributes.Add(attribute);
     return this;
   }
 
-  public SharpClassBuilder WithSummary(SharpSummary summary) {
+  public SharpClassBuilder AddSummary(SharpSummary summary) {
     _sharpClass.Summary = summary;
     return this;
   }

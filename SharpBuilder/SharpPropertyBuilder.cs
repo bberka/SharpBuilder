@@ -21,17 +21,17 @@ public class SharpPropertyBuilder
     return this;
   }
 
-  public SharpPropertyBuilder WithAccessModifier(AccessModifier accessModifier) {
+  public SharpPropertyBuilder AddAccessModifier(AccessModifier accessModifier) {
     _property.AccessModifier = accessModifier;
     return this;
   }
 
-  public SharpPropertyBuilder WithGetterAccessModifier(AccessModifier getterAccessModifier) {
+  public SharpPropertyBuilder AddGetterAccessModifier(AccessModifier getterAccessModifier) {
     _property.GetterAccessModifier = getterAccessModifier;
     return this;
   }
 
-  public SharpPropertyBuilder WithSetterAccessModifier(AccessModifier setterAccessModifier) {
+  public SharpPropertyBuilder AddSetterAccessModifier(AccessModifier setterAccessModifier) {
     _property.SetterAccessModifier = setterAccessModifier;
     return this;
   }
@@ -42,18 +42,18 @@ public class SharpPropertyBuilder
     return this;
   }
 
-  public SharpPropertyBuilder WithAttributes(List<SharpAttribute> attributes) {
+  public SharpPropertyBuilder AddAttributes(List<SharpAttribute> attributes) {
     _property.Attributes = attributes;
     return this;
   }
 
-  public SharpPropertyBuilder WithAttribute(SharpAttribute attribute) {
+  public SharpPropertyBuilder AddAttribute(SharpAttribute attribute) {
     _property.Attributes ??= new List<SharpAttribute>();
     _property.Attributes.Add(attribute);
     return this;
   }
 
-  public SharpPropertyBuilder WithSummary(SharpSummary summary) {
+  public SharpPropertyBuilder AddSummary(SharpSummary summary) {
     _property.Summary = summary;
     return this;
   }

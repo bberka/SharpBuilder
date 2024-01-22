@@ -51,8 +51,6 @@ public class SharpClass
       sb.Append(string.Join(", ", InheritanceList));
     }
     sb.AppendLine(" {");
-    sb.AppendLine();
-    sb.AppendLine();
 
     foreach (var constant in Constants) constant.Compile(sb);
 

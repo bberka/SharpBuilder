@@ -11,7 +11,7 @@ public class SharpConstantBuilder
     _constant = new SharpConstant(name, valueType, value);
   }
 
-  public SharpConstantBuilder WithAccessModifier(AccessModifier accessModifier) {
+  public SharpConstantBuilder AddAccessModifier(AccessModifier accessModifier) {
     _constant.AccessModifier = accessModifier;
     return this;
   }
@@ -31,7 +31,7 @@ public class SharpConstantBuilder
     return this;
   }
 
-  public SharpConstantBuilder WithSummary(SharpSummary summary) {
+  public SharpConstantBuilder AddSummary(SharpSummary summary) {
     _constant.Summary = summary;
     return this;
   }

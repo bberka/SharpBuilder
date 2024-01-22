@@ -28,7 +28,11 @@ public class SharpAttribute
       sb.Append('(');
       for (int i = 0; i < Parameters.Length; i++) {
         var p = Parameters[i];
+        var isString = p is string;
+        if (isString) sb.Append('"');
         sb.Append(p);
+        if (isString) sb.Append('"');
+
         // if (p is bool b) {
         //   sb.Append(b
         //               ? "true"
@@ -55,6 +59,7 @@ public class SharpAttribute
         var isLastParameter = i == Parameters.Length - 1;
         if (!isLastParameter) sb.Append(", ");
       }
+
       sb.Append(')');
     }
 

@@ -6,26 +6,26 @@ public class SharpFileBuilder
 {
   private readonly SharpFile _file;
 
-  public SharpFileBuilder(string fileNameWithoutExtension, string nameSpace) {
-    _file = new SharpFile(fileNameWithoutExtension, nameSpace);
+  public SharpFileBuilder(string fileName, string nameSpace) {
+    _file = new SharpFile(Path.GetFileNameWithoutExtension(fileName), nameSpace);
   }
 
-  public SharpFileBuilder WithUsing(string usingString) {
+  public SharpFileBuilder AddUsing(string usingString) {
     _file.UsingList.Add(usingString);
     return this;
   }
 
-  public SharpFileBuilder WithUsingList(List<string> list) {
+  public SharpFileBuilder AddUsingList(List<string> list) {
     _file.UsingList = list;
     return this;
   }
 
-  public SharpFileBuilder WithClass(SharpClass sharpClass) {
+  public SharpFileBuilder AddClass(SharpClass sharpClass) {
     _file.Classes.Add(sharpClass);
     return this;
   }
 
-  public SharpFileBuilder WithClasses(IEnumerable<SharpClass> sharpClasses) {
+  public SharpFileBuilder AddClasses(IEnumerable<SharpClass> sharpClasses) {
     _file.Classes.AddRange(sharpClasses);
     return this;
   }
@@ -36,7 +36,7 @@ public class SharpFileBuilder
   }
 
   public SharpFileBuilder OverrideFileName(string fileName) {
-    _file.FileNameWithoutExtension = fileName;
+    _file.FileNameWithoutExtension = Path.GetFileNameWithoutExtension(fileName);
     return this;
   }
 
