@@ -1,9 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-    <Version>3.0.0</Version>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <Version>4.0</Version>
     <Title>SharpBuilder</Title>
     <Description>C# code and class builder, for creating models from various type of files. Excel, text, json files.</Description>
     <PackageProjectUrl>https://github.com/bberka/SharpBuilder</PackageProjectUrl>
@@ -12,7 +12,7 @@
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFrameworks>net5.0;net5.0-windows;net6.0;net6.0-windows;net7.0;net7.0-windows;net8.0;net8.0-windows;net9.0;netstandard2.1;net472;net48;net481</TargetFrameworks>
   </PropertyGroup>
 
   <ItemGroup>

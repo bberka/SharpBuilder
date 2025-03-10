@@ -1,10 +1,11 @@
-﻿namespace SharpBuilder.Enums;
-
-public enum ClassKeyword
+﻿namespace SharpBuilder.Enums
 {
-  Readonly,
-  Static,
-  Abstract,
-  Sealed,
-  Partial
+  public enum ClassKeyword
+  {
+    Readonly,
+    Static,
+    Abstract,
+    Sealed,
+    Partial
+  }
 }

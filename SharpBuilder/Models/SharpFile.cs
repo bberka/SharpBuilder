@@ -1,58 +1,72 @@
-﻿using System.Text;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Text;
+using SharpBuilder.Abstract;
 
-namespace SharpBuilder.Models;
-
-public class SharpFile
+namespace SharpBuilder.Models
 {
-  public SharpFile(string fileNameWithoutExtension, string ns) {
-    FileNameWithoutExtension = fileNameWithoutExtension;
-    Namespace = string.IsNullOrEmpty(ns)
-                  ? "SharpBuilder.Models"
-                  : ns;
-  }
-
-  public List<string> UsingList { get; internal set; } = new();
-  public string FileNameWithoutExtension { get; internal set; }
-  public string Namespace { get; internal set; }
-  public bool BlockScopedNameSpace { get; internal set; } = false;
-  public List<SharpClass> Classes { get; internal set; } = new();
-
-  public void Export(string outputDirectory) {
-    var text = ToString();
-    var directory = Path.GetDirectoryName(outputDirectory);
-    if (!string.IsNullOrEmpty(directory) && !Directory.Exists(directory)) Directory.CreateDirectory(directory);
-
-    var outputFilePath = Path.Combine(outputDirectory, FileNameWithoutExtension);
-    File.WriteAllText(outputFilePath, text);
-  }
-
-  public override string ToString() {
-    var sb = new StringBuilder();
-    Compile(sb);
-    return sb.ToString();
-  }
-
-
-  public void Compile(StringBuilder sb) {
-    if (UsingList.Count > 0) {
-      foreach (var item in UsingList) sb.AppendLine("using " + item + ";");
-      sb.AppendLine();
+  public sealed class SharpFile : SharpMaterial
+  {
+    public SharpFile(string fileName, string nameSpace) {
+      FileNameWithoutExtension = Path.GetFileNameWithoutExtension(fileName);
+      Namespace = string.IsNullOrEmpty(nameSpace)
+                    ? "SharpBuilder.Models"
+                    : nameSpace;
     }
-    sb.AppendLine("namespace " + Namespace + (BlockScopedNameSpace
-                                            ? "{"
-                                            : ";"));
-    sb.AppendLine();
 
+    public List<string> UsingList { get; internal set; } = new List<string>();
+    public string FileNameWithoutExtension { get; internal set; }
+    public string Namespace { get; internal set; }
+    public bool BlockScopedNameSpace { get; internal set; } = false;
+    public List<SharpClass> Classes { get; internal set; } = new List<SharpClass>();
+    public List<SharpEnum> Enums { get; internal set; } = new List<SharpEnum>();
 
-    foreach (var sc in Classes) {
-      sc.Compile(sb);
-      sb.AppendLine();
+    public void Export(string outputDirectory) {
+      var text = ToString();
+      var directory = Path.GetDirectoryName(outputDirectory);
+      if (!string.IsNullOrEmpty(directory) && !Directory.Exists(directory)) Directory.CreateDirectory(directory);
+
+      var outputFilePath = Path.Combine(outputDirectory, FileNameWithoutExtension);
+      File.WriteAllText(outputFilePath, text);
     }
 
 
-    if (BlockScopedNameSpace) {
-      sb.AppendLine("");
-      sb.AppendLine("}");
+    public override void Compile(StringBuilder sb) {
+      if (string.IsNullOrEmpty(FileNameWithoutExtension)) {
+        throw new ArgumentNullException(nameof(FileNameWithoutExtension));
+      }
+
+      if (string.IsNullOrEmpty(Namespace)) {
+        throw new ArgumentNullException(nameof(Namespace));
+      }
+
+      if (UsingList.Count > 0) {
+        foreach (var item in UsingList) sb.AppendLine("using " + item + ";");
+        sb.AppendLine();
+      }
+
+      sb.AppendLine("namespace " + Namespace + (BlockScopedNameSpace
+                                                  ? "{"
+                                                  : ";"));
+      sb.AppendLine();
+
+
+      foreach (var sc in Enums) {
+        sc.Compile(sb);
+        sb.AppendLine();
+      }
+
+
+      foreach (var sc in Classes) {
+        sc.Compile(sb);
+        sb.AppendLine();
+      }
+
+
+      if (BlockScopedNameSpace) {
+        sb.AppendLine("}");
+      }
     }
   }
 }

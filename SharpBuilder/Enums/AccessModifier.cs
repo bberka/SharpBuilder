@@ -1,11 +1,12 @@
-﻿namespace SharpBuilder.Enums;
-
-public enum AccessModifier
+﻿namespace SharpBuilder.Enums
 {
-  Public,
-  Private,
-  Protected,
-  Internal,
-  ProtectedInternal,
-  PrivateProtected
+  public enum AccessModifier
+  {
+    Public,
+    Private,
+    Protected,
+    Internal,
+    ProtectedInternal,
+    PrivateProtected
+  }
 }
